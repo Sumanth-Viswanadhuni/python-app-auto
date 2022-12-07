@@ -1,3 +1,4 @@
+steps:
 - task: HelmDeploy@0
   displayName: 'helm package'
   inputs:
