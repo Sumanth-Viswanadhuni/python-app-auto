@@ -12,7 +12,7 @@ variables:
   ApiName: 'python-app'
   ClusterResourceGroup: MyResourceGroup  
   ChartPackage: '$(Build.ArtifactStagingDirectory)/$(ApiName)-$(Build.BuildId).tgz'  
-  ChartPath: 'python-app-auto/$(ApiName)'
+  ChartPath: 'python-app'
   HelmVersion: 3.5.0
   K8sNamespace: 'default'
   KubernetesCluster: 'myAKSCluster'
