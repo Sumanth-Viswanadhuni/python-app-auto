@@ -8,6 +8,14 @@ pool:
   vmImage: 'ubuntu-latest'
  
 variables:
+  AzureSubscription: 'serviceconnection-manual' # Name of the Service Connection
+  ApiName: 'python-app'
+  ClusterResourceGroup: MyResourceGroup  
+  ChartPackage: '$(Build.ArtifactStagingDirectory)/$(ApiName)-$(Build.BuildNumber).tgz'  
+  ChartPath: 'python-app-auto/python-app'
+  HelmVersion: 3.5.0
+  K8sNamespace: 'default'
+  KubernetesCluster: 'myAKSCluster'
   ImageName: 'sumanthviswanadhuni/python-app:$(Build.BuildId)'
  
 stages:
@@ -18,3 +26,4 @@ stages:
     displayName: Build and push Docker image
     steps:
     - template: ./template/CI-steps.yaml
+    
