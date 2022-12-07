@@ -26,37 +26,6 @@ stages:
     displayName: Build and push Docker image
     steps:
     - template: ./template/CI-steps.yaml
-    - task: HelmInstaller@0
-      displayName: 'Install Helm $(HelmVersion)'
-      inputs:
-        helmVersion: $(HelmVersion)
-        checkLatestHelmVersion: false
-        installKubectl: true
-      condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))   
-      
-    - task: HelmDeploy@0
-      displayName: 'helm package'
-      inputs:
-        azureSubscriptionEndpoint: $(AzureSubscription)
-        azureResourceGroup: $(ClusterResourceGroup)
-        kubernetesCluster: $(KubernetesCluster)
-        command: 'package'
-        chartPath: $(ChartPath)
-        chartVersion: $(Build.BuildId)
-        save: false
-        namespace: '$(K8sNamespace)'
-      condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))   
-    
-    - task: HelmDeploy@0
-      displayName: 'Helm upgrade release'
-      inputs:
-        connectionType: 'Azure Resource Manager'
-        azureSubscription: $(AzureSubscription)
-        azureResourceGroup: '$(ClusterResourceGroup)'
-        kubernetesCluster: '$(KubernetesCluster)'
-        useClusterAdmin: true
-        namespace: '$(K8sNamespace)'
-        command: 'upgrade'
-        chartType: 'FilePath'
-        chartPath: '$(ChartPackage)'
-        releaseName: '$(ApiName)-$(K8sNamespace)'
+    - template: ./template/helm-install.yml   
+    - template: ./template/helm-deploy.yml   
+    - template: ./template/helm-deploy-upgrade.yml
