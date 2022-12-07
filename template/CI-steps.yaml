@@ -17,8 +17,4 @@ steps:
     dockerRegistryEndpoint: 'docker-registry'
     command: 'Push an image'
     imageName: '$(ImageName)'
-    condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
-- task: PublishPipelineArtifact@1
-  inputs:
-    artifactName: 'manifests'
-    path: 'manifests'  
+    condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))  
