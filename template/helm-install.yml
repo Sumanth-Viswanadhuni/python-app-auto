@@ -1,3 +1,4 @@
+steps:
 - task: HelmInstaller@0
   displayName: 'Install Helm $(HelmVersion)'
   inputs:
