@@ -1,0 +1,7 @@
+- task: HelmInstaller@0
+      displayName: 'Install Helm $(HelmVersion)'
+      inputs:
+        helmVersion: $(HelmVersion)
+        checkLatestHelmVersion: false
+        installKubectl: true
+      condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
