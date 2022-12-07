@@ -14,7 +14,7 @@ variables:
   ChartPackage: '$(Build.ArtifactStagingDirectory)/$(ApiName)-$(Build.BuildId).tgz'  
   ChartPath: 'python-app'
   HelmVersion: 3.5.0
-  K8sNamespace: 'default'
+  K8sNamespace: 'test'
   KubernetesCluster: 'myAKSCluster'
   ImageName: 'sumanthviswanadhuni/python-app:$(Build.BuildId)'
  
