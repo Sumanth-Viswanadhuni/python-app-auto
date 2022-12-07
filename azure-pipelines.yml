@@ -11,7 +11,7 @@ variables:
   AzureSubscription: 'serviceconnection-manual' # Name of the Service Connection
   ApiName: 'python-app'
   ClusterResourceGroup: MyResourceGroup  
-  ChartPackage: '$(Build.ArtifactStagingDirectory)/$(ApiName)-$(Build.BuildId).tgz'  
+  ChartPackage: '$(Build.ArtifactStagingDirectory)/$(ApiName)-$(Build.BuildId)'  
   ChartPath: 'python-app'
   HelmVersion: 3.5.0
   K8sNamespace: 'test'
