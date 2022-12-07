@@ -12,3 +12,4 @@ steps:
     chartType: 'FilePath'
     chartPath: '$(ChartPackage)'
     releaseName: '$(ApiName)-$(K8sNamespace)'
+    arguments: '--create-namespace'
