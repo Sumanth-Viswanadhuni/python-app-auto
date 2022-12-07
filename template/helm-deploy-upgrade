@@ -1,0 +1,13 @@
+- task: HelmDeploy@0
+      displayName: 'Helm upgrade release'
+      inputs:
+        connectionType: 'Azure Resource Manager'
+        azureSubscription: $(AzureSubscription)
+        azureResourceGroup: '$(ClusterResourceGroup)'
+        kubernetesCluster: '$(KubernetesCluster)'
+        useClusterAdmin: true
+        namespace: '$(K8sNamespace)'
+        command: 'upgrade'
+        chartType: 'FilePath'
+        chartPath: '$(ChartPackage)'
+        releaseName: '$(ApiName)-$(K8sNamespace)'
