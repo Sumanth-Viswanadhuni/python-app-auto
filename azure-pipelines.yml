@@ -58,11 +58,19 @@ stages:
           steps:
           - task: DownloadPipelineArtifact@2
             inputs:
-              artifactName: 'drop'
+              artifactName: $(ArtifactName)
               downloadPath: '$(System.ArtifactsDirectory)'
             
           - template: ./Final-templates/DeployHelmPackage.yml           
- 
+            parameters:
+              apiName: $(ApiName)
+              azureSubscription: '$(AzureSubscription)'
+              clusterResourceGroup: '$(ClusterResourceGroup)'
+              chartPackage: '$(ChartPackage)'
+              helmVersion: $(HelmVersion)
+              k8sNamespace: $(K8sNamespace)
+              kubernetesCluster: $(KubernetesCluster)
+              releaseValuesFile: '$(ReleaseValuesFile)' 
  
  
  
