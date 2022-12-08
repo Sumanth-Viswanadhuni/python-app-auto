@@ -47,8 +47,8 @@ stages:
   displayName: Deploy stage
   dependsOn: Build
   Variables:
-      ChartPackage: '$(Pipeline.Workspace)/CustomerApiBuild/CustomerApi/customerapi-$(resources.pipeline.CustomerApiBuild.runname).tgz' 
-      ReleaseValuesFile: '$(Pipeline.Workspace)/CustomerApiBuild/CustomerApi/values.yaml'
+    ChartPackage: '$(Pipeline.Workspace)/python-app-3.5.0.tgz' 
+    ReleaseValuesFile: '$(Pipeline.Workspace)/python-app/values.yaml'
 
   jobs:
   - deployment: Deploy
