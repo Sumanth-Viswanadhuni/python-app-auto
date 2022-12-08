@@ -6,7 +6,7 @@ steps:
     dockerRegistryEndpoint: 'docker-registry'
     command: 'Build an image'
     dockerFile: '**/Dockerfile'
-    imageName: '$(ImageName)'
+    imageName: '$(Repository)'
     includeLatestTag: true
     useDefaultContext: false
     buildContext: '.'
@@ -16,5 +16,5 @@ steps:
     containerregistrytype: 'Container Registry'
     dockerRegistryEndpoint: 'docker-registry'
     command: 'Push an image'
-    imageName: '$(ImageName)'
+    imageName: '$(Repository)'
     condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))  
