@@ -11,14 +11,18 @@ variables:
   AzureSubscription: 'serviceconnection-manual' # Name of the Service Connection
   ApiName: 'python-app'
   BuildId: $(Build.BuildId)
+  buildNumber: $(BuildNumber)
+  ArtifactName: 'python-app'
   ClusterResourceGroup: MyResourceGroup  
   ChartPackage: '$(Build.ArtifactStagingDirectory)/$(ApiName)-$(Build.BuildId).tgz'  
+  artifactStagingDirectory: $(Build.ArtifactStagingDirectory)
   ChartPath: $(ApiName)
   HelmVersion: 3.5.0
   K8sNamespace: '$(Apiname)-test'
   KubernetesCluster: 'myAKSCluster'
-  ImageName: 'sumanthviswanadhuni/python-app:$(Build.BuildId)'
- 
+  Repository: 'sumanthviswanadhuni/$(ApiName)'
+  ReleaseValuesFile: '$(ChartPath)/values.yaml'
+  
 stages:
 - stage: Build
   displayName: Build image
