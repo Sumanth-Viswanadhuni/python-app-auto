@@ -25,17 +25,6 @@ parameters:
     default: 
 
 steps:
-  - task: Tokenizer@0
-    displayName: 'Run Tokenizer'
-    inputs:
-      sourceFilesPattern: ${{ parameters.releaseValuesFile }}
-
-  - task: HelmInstaller@0
-    displayName: 'Install Helm ${{ parameters.helmVersion }}'
-    inputs:
-      helmVersion: '${{ parameters.helmVersion }}'
-      checkLatestHelmVersion: false
-      installKubectl: true
   
   - task: HelmDeploy@0
     displayName: 'Helm upgrade release'
