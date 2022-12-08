@@ -47,8 +47,8 @@ stages:
   displayName: Deploy stage
   dependsOn: Build
   Variables:
-    ChartPackage: '$(Pipeline.Workspace)/python-app-3.5.0.tgz' 
-    ReleaseValuesFile: '$(Pipeline.Workspace)/python-app/values.yaml'
+   # ChartPackage: '$(Pipeline.Workspace)/python-app-3.5.0.tgz' 
+   # ReleaseValuesFile: '$(Pipeline.Workspace)/python-app/values.yaml'
 
   jobs:
   - deployment: Deploy
@@ -70,11 +70,11 @@ stages:
               apiName: $(ApiName)
               azureSubscription: '$(AzureSubscription)'
               clusterResourceGroup: '$(ClusterResourceGroup)'
-              chartPackage: '$(ChartPackage)'
+              chartPackage: '$(Pipeline.Workspace)/python-app-3.5.0.tgz'
               helmVersion: $(HelmVersion)
               k8sNamespace: $(K8sNamespace)
               kubernetesCluster: $(KubernetesCluster)
-              releaseValuesFile: '$(ReleaseValuesFile)' 
+              releaseValuesFile: '$(Pipeline.Workspace)/python-app/values.yaml' 
  
  
  
