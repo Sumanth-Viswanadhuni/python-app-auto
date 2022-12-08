@@ -8,6 +8,7 @@ steps:
     command: 'package'
     chartPath: $(ChartPath)
     chartVersion: $(Build.BuildId)
+    destination: $(Build.ArtifactStagingDirectory)
     save: false
     namespace: '$(K8sNamespace)'
   condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
