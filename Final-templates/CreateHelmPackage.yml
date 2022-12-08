@@ -28,10 +28,10 @@ parameters:
     default: 
 
 steps:
-  - task: Tokenizer@0
-    displayName: 'Run Tokenizer'
-    inputs:
-      sourceFilesPattern: ${{ parameters.releaseValuesFile }}
+ # - task: Tokenizer@0
+ #   displayName: 'Run Tokenizer'
+ #  inputs:
+ #     sourceFilesPattern: ${{ parameters.releaseValuesFile }}
 
   - task: CopyFiles@2
     displayName: 'Copy Files to:${{ parameters.artifactStagingDirectory }}/${{ parameters.artifactName }}'
