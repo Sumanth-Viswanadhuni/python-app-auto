@@ -30,7 +30,7 @@ stages:
   - job: Build
     displayName: Build and push Docker image
     steps:
-    - template: ./template/CI-steps.yaml
-    - template: ./template/helm-install.yml   
-    - template: ./template/helm-deploy.yml   
-    - template: ./template/helm-deploy-upgrade.yml
+    - template: ./Final-templates/DockerBuildandPush.yml
+    - template: ./Final-templates/CreateHelmPackage.yml
+    
+    
