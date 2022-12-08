@@ -55,7 +55,7 @@ steps:
       kubernetesCluster: ${{ parameters.kubernetesCluster }}
       command: 'package'
       chartPath: ${{ parameters.chartPath }}
-      chartVersion: ${{ parameters.buildNumber }}
+      chartVersion: ${{ parameters.helmVersion }}
       destination: '${{ parameters.artifactStagingDirectory }}/${{ parameters.artifactName }}'
       save: false      
 
