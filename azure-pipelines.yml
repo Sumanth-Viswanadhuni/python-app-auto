@@ -46,6 +46,10 @@ stages:
 - stage: Deploy
   displayName: Deploy stage
   dependsOn: Build
+  Variables:
+      ChartPackage: '$(Pipeline.Workspace)/CustomerApiBuild/CustomerApi/customerapi-$(resources.pipeline.CustomerApiBuild.runname).tgz' 
+      ReleaseValuesFile: '$(Pipeline.Workspace)/CustomerApiBuild/CustomerApi/values.yaml'
+
   jobs:
   - deployment: Deploy
     displayName: Deploy job
