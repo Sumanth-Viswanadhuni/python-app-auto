@@ -11,5 +11,5 @@ steps:
     command: 'upgrade'
     chartType: 'FilePath'
     chartPath: '$(ChartPackage)'
-    releaseName: '$(ApiName)-$(K8sNamespace)'
+    releaseName: '$(K8sNamespace)'
     arguments: '--create-namespace'
