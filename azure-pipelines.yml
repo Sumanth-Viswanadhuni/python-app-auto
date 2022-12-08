@@ -46,7 +46,7 @@ stages:
 - stage: Deploy
   displayName: Deploy stage
   dependsOn: Build
-  Variables:
+  #Variables:
    # ChartPackage: '$(Pipeline.Workspace)/python-app-3.5.0.tgz' 
    # ReleaseValuesFile: '$(Pipeline.Workspace)/python-app/values.yaml'
 
