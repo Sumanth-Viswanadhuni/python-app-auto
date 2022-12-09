@@ -22,7 +22,7 @@ variables:
   KubernetesCluster: 'myAKSCluster'
   Repository: 'sumanthviswanadhuni/$(ApiName)'
   ReleaseValuesFile: '$(ChartPath)/values.yaml'
-  Releasechartfile: '$(ChartPath)/chart.yaml' 
+  ReleaseChartFile: '$(ChartPath)/chart.yaml' 
   
 stages:
 - stage: Build
@@ -40,6 +40,7 @@ stages:
           chartPath: $(ChartPath)          
           kubernetesCluster: $(KubernetesCluster)        
           releaseValuesFile: $(ReleaseValuesFile)
+          releasechartFile: $(ReleaseChartFile)
           artifactStagingDirectory: $(Build.ArtifactStagingDirectory)
           artifactName: $(ArtifactName)
           helmVersion: $(HelmVersion)
