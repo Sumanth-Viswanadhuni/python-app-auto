@@ -70,11 +70,11 @@ stages:
               apiName: $(ApiName)
               azureSubscription: '$(AzureSubscription)'
               clusterResourceGroup: '$(ClusterResourceGroup)'
-              chartPackage: '$(System.ArtifactsDirectory)/python-app/python-app-3.5.0.tgz'
+          #    chartPackage: '$(System.ArtifactsDirectory)/python-app/python-app-3.5.0.tgz'
               helmVersion: $(HelmVersion)
               k8sNamespace: $(K8sNamespace)
               kubernetesCluster: $(KubernetesCluster)
-              releaseValuesFile: '$(System.ArtifactsDirectory)/python-app/values.yaml' 
+           #   releaseValuesFile: '$(System.ArtifactsDirectory)/python-app/values.yaml' 
  
  
  
