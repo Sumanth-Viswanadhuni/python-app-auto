@@ -25,7 +25,10 @@ parameters:
     default:
   - name: releaseValuesFile
     type: string
-    default: 
+    default:
+  - name: releaseChartFile
+    type: string
+    default:
 
 steps:
  # - task: Tokenizer@0
