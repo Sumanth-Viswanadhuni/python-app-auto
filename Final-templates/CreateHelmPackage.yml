@@ -39,6 +39,20 @@ steps:
       SourceFolder: ${{ parameters.chartPath }}
       Contents: '**\*'
       TargetFolder: '${{ parameters.artifactStagingDirectory }}/${{ parameters.artifactName }}'
+     
+  - task: CopyFiles@2
+    displayName: 'Copy Files to:${{ parameters.artifactStagingDirectory }}/${{ parameters.artifactName }}'
+    inputs:
+      SourceFolder: ${{ parameters.chartPath }}
+      Contents: 'values.yaml'
+      TargetFolder: '${{ parameters.artifactStagingDirectory }}/${{ parameters.artifactName }}'
+      
+  - task: CopyFiles@2
+    displayName: 'Copy Files to:${{ parameters.artifactStagingDirectory }}/${{ parameters.artifactName }}'
+    inputs:
+      SourceFolder: ${{ parameters.chartPath }}
+      Contents: 'chart.yaml'
+      TargetFolder: '${{ parameters.artifactStagingDirectory }}/${{ parameters.artifactName }}'
       
 
   - task: HelmInstaller@0
