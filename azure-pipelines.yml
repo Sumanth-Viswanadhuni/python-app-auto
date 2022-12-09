@@ -17,7 +17,7 @@ variables:
   ChartPackage: '$(Build.ArtifactStagingDirectory)/$(ApiName)-$(Build.BuildId).tgz'  
   artifactStagingDirectory: $(Build.ArtifactStagingDirectory)
   ChartPath: $(ApiName)
-  HelmVersion: 3.5.0
+  HelmVersion: 3.9.4
   K8sNamespace: '$(Apiname)-test'
   KubernetesCluster: 'myAKSCluster'
   Repository: 'sumanthviswanadhuni/$(ApiName)'
