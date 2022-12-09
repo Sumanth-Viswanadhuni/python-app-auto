@@ -37,7 +37,7 @@ steps:
       namespace: ${{ parameters.k8sNamespace }}
       command: 'upgrade'
       chartType: 'FilePath'
-      chartPath: '$(System.ArtifactsDirectory)/python-app/python-app-3.5.0.tgz'
+      chartPath: '$(pipeline.workspace)/python-app/python-app-3.5.0.tgz'
       releaseName: ${{ parameters.apiName }}-${{ parameters.k8sNamespace }}
-      releasevaluesFile: '$(System.ArtifactsDirectory)/python-app/values.yaml'
+      valuesFile: '$(pipeline.workspace)/python-app/values.yaml'
       arguments: '--create-namespace'
