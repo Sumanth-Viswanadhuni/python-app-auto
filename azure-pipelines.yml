@@ -40,7 +40,7 @@ stages:
           chartPath: $(ChartPath)          
           kubernetesCluster: $(KubernetesCluster)        
           releaseValuesFile: $(ReleaseValuesFile)
-          releasechartFile: $(ReleaseChartFile)
+         # releasechartFile: $(ReleaseChartFile)
           artifactStagingDirectory: $(Build.ArtifactStagingDirectory)
           artifactName: $(ArtifactName)
           helmVersion: $(HelmVersion)
