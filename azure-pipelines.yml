@@ -22,6 +22,7 @@ variables:
   KubernetesCluster: 'myAKSCluster'
   Repository: 'sumanthviswanadhuni/$(ApiName)'
   ReleaseValuesFile: '$(ChartPath)/values.yaml'
+  Releasechartfile: '$(ChartPath)/chart.yaml' 
   
 stages:
 - stage: Build
