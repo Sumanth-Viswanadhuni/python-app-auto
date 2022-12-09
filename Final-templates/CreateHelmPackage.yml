@@ -26,9 +26,9 @@ parameters:
   - name: releaseValuesFile
     type: string
     default:
-  - name: releaseChartFile
-    type: string
-    default:
+ # - name: releaseChartFile
+ #   type: string
+ #   default:
 
 steps:
  # - task: Tokenizer@0
@@ -36,12 +36,12 @@ steps:
  #  inputs:
  #     sourceFilesPattern: ${{ parameters.releaseValuesFile }}
 
-  - task: CopyFiles@2
-    displayName: 'Copy Files to:${{ parameters.artifactStagingDirectory }}/${{ parameters.artifactName }}'
-    inputs:
-      SourceFolder: ${{ parameters.chartPath }}
-      Contents: '**\*'
-      TargetFolder: '${{ parameters.artifactStagingDirectory }}/${{ parameters.artifactName }}'
+ # - task: CopyFiles@2
+ #   displayName: 'Copy Files to:${{ parameters.artifactStagingDirectory }}/${{ parameters.artifactName }}'
+ #  inputs:
+ #     SourceFolder: ${{ parameters.chartPath }}
+ #     Contents: '**\*'
+ #     TargetFolder: '${{ parameters.artifactStagingDirectory }}/${{ parameters.artifactName }}'
      
   - task: CopyFiles@2
     displayName: 'Copy Files to:${{ parameters.artifactStagingDirectory }}/${{ parameters.artifactName }}'
@@ -50,12 +50,12 @@ steps:
       Contents: 'values.yaml'
       TargetFolder: '${{ parameters.artifactStagingDirectory }}/${{ parameters.artifactName }}'
       
-  - task: CopyFiles@2
-    displayName: 'Copy Files to:${{ parameters.artifactStagingDirectory }}/${{ parameters.artifactName }}'
-    inputs:
-      SourceFolder: ${{ parameters.chartPath }}
-      Contents: 'chart.yaml'
-      TargetFolder: '${{ parameters.artifactStagingDirectory }}/${{ parameters.artifactName }}'
+ # - task: CopyFiles@2
+ #   displayName: 'Copy Files to:${{ parameters.artifactStagingDirectory }}/${{ parameters.artifactName }}'
+ #   inputs:
+ #     SourceFolder: ${{ parameters.chartPath }}
+ #     Contents: 'chart.yaml'
+ #     TargetFolder: '${{ parameters.artifactStagingDirectory }}/${{ parameters.artifactName }}'
       
 
   - task: HelmInstaller@0
