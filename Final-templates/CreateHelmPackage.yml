@@ -37,7 +37,7 @@ steps:
     displayName: 'Copy Files to:${{ parameters.artifactStagingDirectory }}/${{ parameters.artifactName }}'
     inputs:
       SourceFolder: ${{ parameters.chartPath }}
-      Contents: **\*
+      Contents: '**\*'
       TargetFolder: '${{ parameters.artifactStagingDirectory }}/${{ parameters.artifactName }}'
       
 
