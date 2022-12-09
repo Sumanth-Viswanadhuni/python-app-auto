@@ -39,5 +39,5 @@ steps:
       chartType: 'FilePath'
       chartPath: '$(pipeline.workspace)'
       releaseName: ${{ parameters.apiName }}-${{ parameters.k8sNamespace }}
-     # valuesFile: '$(pipeline.workspace)/python-app/values.yaml'
+      valuesFile: '$(pipeline.workspace)/python-app/values.yaml'
       arguments: '--create-namespace'
