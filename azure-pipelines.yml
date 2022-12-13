@@ -9,20 +9,19 @@ pool:
  
 variables:
   AzureSubscription: 'serviceconnection-manual' # Name of the Service Connection
-  ApiName: 'python-app'
+  ApiName: 'python-app2'
   BuildId: $(Build.BuildId)
-  BuildNumber: $(BuildNumber)
-  ArtifactName: 'python-app'
+  BuildNumber: 1.0.0
+  ArtifactName: 'python-app2'
   ClusterResourceGroup: MyResourceGroup  
-  ChartPackage: '$(Build.ArtifactStagingDirectory)/$(ApiName)-$(Build.BuildId).tgz'  
+  ChartPackage: '$(Pipeline.workspace)/$(ApiName)/$(ApiName)-$(BuildNumber).tgz'  
   artifactStagingDirectory: $(Build.ArtifactStagingDirectory)
   ChartPath: $(ApiName)
-  HelmVersion: 3.9.4
-  K8sNamespace: '$(Apiname)-test'
+  HelmVersion: 3.10.1
+  K8sNamespace: 'default'
   KubernetesCluster: 'myAKSCluster'
   Repository: 'sumanthviswanadhuni/$(ApiName)'
-  ReleaseValuesFile: '$(ChartPath)/values.yaml'
- # ReleaseChartFile: '$(ChartPath)/chart.yaml' 
+  ReleaseValuesFile: '$(pipeline.workspace)/python-app2/values.yaml'
   
 stages:
 - stage: Build
@@ -40,24 +39,21 @@ stages:
           chartPath: $(ChartPath)          
           kubernetesCluster: $(KubernetesCluster)        
           releaseValuesFile: $(ReleaseValuesFile)
-         # releasechartFile: $(ReleaseChartFile)
           artifactStagingDirectory: $(Build.ArtifactStagingDirectory)
           artifactName: $(ArtifactName)
           helmVersion: $(HelmVersion)
     
-- stage: Deploy
-  displayName: Deploy stage
-  dependsOn: Build
-  #Variables:
-   # ChartPackage: '$(Pipeline.Workspace)/python-app-3.5.0.tgz' 
-   # ReleaseValuesFile: '$(Pipeline.Workspace)/python-app/values.yaml'
+
+- stage: DeployToTest 
+  displayName: Test Environment
+  dependsOn: build
 
   jobs:
   - deployment: Deploy
-    displayName: Deploy job
+    displayName: Deploying Application into TEST Environment
     pool:
       vmImage: 'ubuntu-latest'
-    environment: "test"
+    environment: "TEST"
     strategy:
       runOnce:
         deploy:
@@ -65,39 +61,18 @@ stages:
           - task: DownloadBuildArtifacts@0
             inputs:
               artifactName: $(ArtifactName)
-              downloadPath: '$(System.ArtifactsDirectory)'
+              downloadPath: '$(pipeline.workspace)'
             
           - template: ./Final-templates/DeployHelmPackage.yml           
             parameters:
               apiName: $(ApiName)
               azureSubscription: '$(AzureSubscription)'
               clusterResourceGroup: '$(ClusterResourceGroup)'
-          #    chartPackage: '$(System.ArtifactsDirectory)/python-app/python-app-3.5.0.tgz'
+              chartPackage: '$(ChartPackage)'
               helmVersion: $(HelmVersion)
               k8sNamespace: $(K8sNamespace)
               kubernetesCluster: $(KubernetesCluster)
-           #   releaseValuesFile: '$(System.ArtifactsDirectory)/python-app/values.yaml' 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+              releaseValuesFile: $(ReleaseValuesFile)
+
+
    
